@@ -1,34 +1,38 @@
+import React, { Component } from "react";
 
-import React from "react"
-import { useState } from "react"
-import './App.css'
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-
-function App() {
-
-  const [counter, setCounter] = useState(0);
-
-  const increment = () => {
-    setCounter(counter + 1);
+    this.state = {
+      count: 0,
+    };
   }
 
-  const decrement = () => {
-    setCounter(counter - 1);
+  increment = () => {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  };
+
+  decrement = () => {
+    this.setState({
+      count: this.state.count - 1,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+
+        <p>Count: {this.state.count}</p>
+
+        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.decrement}>Decrement</button>
+      </div>
+    );
   }
-
-  return (
-    <>
-      <h1>Counter App</h1>
-      <p>Count: {counter}</p>
-      <button onClick={decrement}>
-        Decrement
-      </button>
-
-      <button onClick={increment}>
-        Increment
-      </button>
-    </>
-  )
 }
 
 export default App;
